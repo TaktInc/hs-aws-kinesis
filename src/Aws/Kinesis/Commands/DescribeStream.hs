@@ -121,7 +121,7 @@ instance NFData DescribeStreamResponse
 
 instance ResponseConsumer r DescribeStreamResponse where
     type ResponseMetadata DescribeStreamResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance FromJSON DescribeStreamResponse where
     parseJSON = withObject "DescribeStreamResponse" $ \o -> DescribeStreamResponse

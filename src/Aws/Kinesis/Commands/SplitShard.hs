@@ -138,7 +138,7 @@ instance NFData SplitShardResponse
 
 instance ResponseConsumer r SplitShardResponse where
     type ResponseMetadata SplitShardResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance FromJSON SplitShardResponse where
     parseJSON _ = return SplitShardResponse

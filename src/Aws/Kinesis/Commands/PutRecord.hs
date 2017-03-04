@@ -166,7 +166,7 @@ instance FromJSON PutRecordResponse where
 
 instance ResponseConsumer r PutRecordResponse where
     type ResponseMetadata PutRecordResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance SignQuery PutRecord where
     type ServiceConfiguration PutRecord = KinesisConfiguration

@@ -99,7 +99,7 @@ instance FromJSON DeleteStreamResponse where
 
 instance ResponseConsumer r DeleteStreamResponse where
     type ResponseMetadata DeleteStreamResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance SignQuery DeleteStream where
     type ServiceConfiguration DeleteStream = KinesisConfiguration

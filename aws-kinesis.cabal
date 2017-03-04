@@ -79,7 +79,7 @@ Library
     build-depends:
         QuickCheck >= 2.7,
         aeson >= 0.7,
-        aws >= 0.9,
+        aws >= 0.15,
         aws-general >= 0.2.2,
         base == 4.*,
         base64-bytestring >= 1.0,

@@ -149,7 +149,7 @@ instance FromJSON GetShardIteratorResponse where
 
 instance ResponseConsumer r GetShardIteratorResponse where
     type ResponseMetadata GetShardIteratorResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance SignQuery GetShardIterator where
     type ServiceConfiguration GetShardIterator = KinesisConfiguration

@@ -127,7 +127,7 @@ instance NFData CreateStreamResponse
 
 instance ResponseConsumer r CreateStreamResponse where
     type ResponseMetadata CreateStreamResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance FromJSON CreateStreamResponse where
     parseJSON _ = return CreateStreamResponse

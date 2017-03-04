@@ -124,7 +124,7 @@ instance NFData MergeShardsResponse
 
 instance ResponseConsumer r MergeShardsResponse where
     type ResponseMetadata MergeShardsResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance FromJSON MergeShardsResponse where
     parseJSON _ = return MergeShardsResponse

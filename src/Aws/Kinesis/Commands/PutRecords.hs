@@ -208,7 +208,7 @@ instance Transaction PutRecords PutRecordsResponse where
 
 instance ResponseConsumer r PutRecordsResponse where
     type ResponseMetadata PutRecordsResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance AsMemoryResponse PutRecordsResponse where
     type MemoryResponse PutRecordsResponse = PutRecordsResponse

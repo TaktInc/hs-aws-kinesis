@@ -121,7 +121,7 @@ instance FromJSON ListStreamsResponse where
 
 instance ResponseConsumer r ListStreamsResponse where
     type ResponseMetadata ListStreamsResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance SignQuery ListStreams where
     type ServiceConfiguration ListStreams = KinesisConfiguration

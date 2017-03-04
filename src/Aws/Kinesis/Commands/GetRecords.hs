@@ -137,7 +137,7 @@ instance FromJSON GetRecordsResponse where
 
 instance ResponseConsumer r GetRecordsResponse where
     type ResponseMetadata GetRecordsResponse = KinesisMetadata
-    responseConsumer _ = kinesisResponseConsumer
+    responseConsumer _ _ = kinesisResponseConsumer
 
 instance SignQuery GetRecords where
     type ServiceConfiguration GetRecords = KinesisConfiguration
