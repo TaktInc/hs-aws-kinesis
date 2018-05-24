@@ -88,7 +88,7 @@ import Data.Aeson
 import qualified Data.ByteString as B
 import qualified Data.ByteString.Lazy as LB
 import qualified Data.ByteString.Char8 as B8
-import Data.Conduit (($$+-))
+import Data.Conduit ((.|), runConduit)
 import Data.Conduit.Binary (sinkLbs)
 import Data.IORef
 import Data.Maybe
@@ -307,7 +307,7 @@ jsonResponseConsumer
     :: FromJSON a
     => HTTPResponseConsumer a
 jsonResponseConsumer res = do
-    doc <- HTTP.responseBody res $$+- sinkLbs
+    doc <- runConduit $ HTTP.responseBody res .| sinkLbs
     case eitherDecode (if doc == mempty then "{}" else doc) of
         Left err -> throwM . KinesisResponseJsonError $ T.pack err
         Right v -> return v
@@ -336,7 +336,7 @@ kinesisResponseConsumer metadata resp = do
 --
 errorResponseConsumer :: HTTPResponseConsumer a
 errorResponseConsumer resp = do
-    doc <- HTTP.responseBody resp $$+- sinkLbs
+    doc <- runConduit $ HTTP.responseBody resp .| sinkLbs
     if HTTP.responseStatus resp == HTTP.status400
         then kinesisError doc
         else throwM KinesisOtherError
